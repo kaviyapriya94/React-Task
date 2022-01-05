@@ -1,0 +1,101 @@
+.bannerBG{
+    height:100vh;
+    width:100%;
+    /* background-image: url("D:/kaviya/assignment3/src/images/banner.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .nav{
+    padding-right:150px;
+    font-weight:bold;
+  }
+  .nav a{
+    color:black;
+    
+  }
+  .containerBN{
+    margin-top:50px;
+    padding-top:80px;
+    padding-left:90px;
+    color:#ffff;
+    line-height: 2.5rem;
+    font-size:45px;
+    font-weight: bold;
+    font-family:calibri ;
+  }
+  .containerBN button{
+    border-radius:25px;
+    background-image:linear-gradient(to right,#18b4ed,#0c4f9c);
+    color: white;
+    border:none;
+  }
+  .containerBN button:hover{
+    border-radius:25px;
+    background-image:linear-gradient(to right,#f2cb4e,#c97404);
+    color: black;
+  }
+  .dropdown-item:hover{
+    background-image:linear-gradient(to right,#18b4ed,#0c4f9c);
+    
+   
+   }
+   .dropdown-item{
+     font-size:13px;
+   }
+   .dropdown-menu a:hover{
+    color:white;
+    padding-left:30px;
+    transition:1s;
+   }
+   .dropdown-menu{
+     line-height:30px;
+   }
+   .whatsapp-icon
+   {
+     float:right;
+     padding-top:30px;
+     padding-right:30px;
+   }
+   .call-to-action
+   {
+     float:right;
+     overflow:hidden;
+  }
+  .pull-contact-list a{
+    display:inline;
+    text-decoration: none;
+  }
+  .pull-contact-list{
+    color:white;
+      background-color:#0c2e7d;
+      padding:10px 15px;
+      border-radius:25px;
+      line-height:2rem;
+      margin-right:-152px;
+      cursor:pointer;
+      transition:1s;
+  }
+  .pull-contact-list:hover{
+      padding-right:180px;
+  }
+   .phone a{
+     color:white;
+   }
+   .email a{
+    color:white;
+  }
+  @media all and (min-width: 992px) {
+      .navbar .nav-item .dropdown-menu{  display:block; opacity: 0;  visibility: hidden; transition:.3s; margin-top:20px;  }
+      .navbar .nav-item:hover .nav-link{ color:black;  }
+      .navbar .nav-item:hover .dropdown-menu{ transition: .3s; opacity:1; visibility:visible;  }
+  }	
+  
+   
+   
+  
+  
+  
+  
+  
+  
+  
