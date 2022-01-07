@@ -14,6 +14,8 @@ import { Provider } from "react-redux";
 import store from './redux/store';
 import Products from './Components/Products.js';
 import ProductDetails from './Components/ProductDetails.js';
+import List from './Components/List'
+import ListMapping from './Components/ListMapping'
 const routing=(
   <div>
     <Provider store={store}>
@@ -30,6 +32,8 @@ const routing=(
         <Route path='/ApiFetch' element={<ApiFetch />} />
         <Route path='/Products' element={<Products />} />
         <Route path='/ProductDetails' element={<ProductDetails />} />
+        <Route path='/List' element={<List />} />
+        <Route path='/ListMapping' element={<ListMapping />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       

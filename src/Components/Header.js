@@ -35,6 +35,9 @@ export default function Home(){
                                     <li className="dropdown-item">
                                         <NavLink to='/Products'  style={{textDecoration:'none'}}>Products</NavLink>
                                     </li>
+                                    <li className="dropdown-item">
+                                        <NavLink to='/List'  style={{textDecoration:'none'}}>List</NavLink>
+                                    </li>
                                 </ul>
                             </li>
                             <li className="nav-item"><Notification/></li>

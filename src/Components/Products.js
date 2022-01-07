@@ -9,6 +9,7 @@ import Pagination from './Pagination';
 import AddToCart from './AddToCart';
 import { useDispatch,useSelector } from "react-redux";
 import actions from "../redux/AddToCart/actions";
+import {Spinner} from "react-bootstrap";
 
 export default function Products(){
     const count = useSelector(
@@ -19,12 +20,16 @@ export default function Products(){
     const navigate=useNavigate();
     const[ProductsList,setProductsList]=useState([]);
     const[currentPage,setCurrentPage]=useState(1);
+    const[Loading,setLoading]=useState(false);
     // const[add,setAdd]=useState(1);
     let productsPerPage=10;
     const[value,setValue]=useState('all');
     useEffect(() =>{
+        
         Axios.get("https://fakestoreapi.com/products").then(res=>{
             setProductsList(res.data);
+            setLoading(true);
+            
          });
      }, []); 
 
@@ -121,9 +126,10 @@ export default function Products(){
    }
   
     return(
+        <>
+        {Loading?
         <div>
             <h1 className="text-primary pb-3 pt-3 text-center">Products</h1>
-
             {value==="all"?
             <>
             <h5 className="text-center text-primary pb-2">Showing {indexOfFirstProduct+1}-{indexOfLastProduct} products of {ProductsList.length} products</h5>
@@ -197,5 +203,8 @@ export default function Products(){
         </>}
         <Sidebar setSelect={setSelect} handleChecked={handleChecked}/>
         </div>
+        :<div className="p-5 text-center"><Spinner animation="border" variant="primary" /></div>
+        }
+        </>
     )
 }
