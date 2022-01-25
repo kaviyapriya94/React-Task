@@ -172,10 +172,11 @@ export default function Products(){
         :<>
         <div className="product">
             
-            {ProductsList.filter(val=>{
+            {/* {ProductsList.filter(val=>{
                 val= val.category.toLowerCase().includes(value.toLowerCase());
                 return val;
-            }).map((p)=>
+            }).map((p)=> */}
+            {ProductsList.map((p)=>
                         <div className='pborder' key={p.id}>
                             <img className="pt-4 pl-3"src={p.image} alt="Card" width="50%" height="200vh" />
                             <div className="pb-3">

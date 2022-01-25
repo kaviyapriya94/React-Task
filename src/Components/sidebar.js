@@ -37,13 +37,30 @@ export default function Sidebar({setSelect,handleChecked}){
                 <div>
                     <h5 className="text-white pt-2">Catagory</h5>
                     <div className="select pt-2">
-                        <select onChange={setSelect}>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" id="check5" name="Men's Clothing" value="Men's Clothing" onChange={handleChecked}/>
+                            <label className="form-check-label">Men's Clothing</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" id="check6" name="Jewelery" value="Jewelery" onChange={handleChecked}/> 
+                            <label className="form-check-label">Jewelery</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" id="check6" name="Electronics" value="Electronics" onChange={handleChecked}/> 
+                            <label className="form-check-label">Electronics</label>
+                        </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" id="check6" name="Women's Clothing" value="Women's Clothing" onChange={handleChecked}/> 
+                            <label className="form-check-label">Women's Clothing</label>
+                        </div>
+
+                        {/* <select onChange={setSelect}>
                             <option value="all">All</option>
                             <option value="men's clothing">Men's Clothing</option>
                             <option value="jewelery">Jewelery</option>
                             <option value="Electronics">Electronics</option>
                             <option value="women's clothing">Women's Clothing</option>
-                        </select>
+                        </select> */}
                     </div>
                 </div>
                 

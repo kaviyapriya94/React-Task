@@ -11,8 +11,8 @@ function App() {
   return (
     <div>
       <Helmet>
-        <title>Assignment3
-        </title>
+        <title>React-Task</title>
+        
       </Helmet>
     </div>
   );
