@@ -19,28 +19,26 @@ import ListMapping from './Components/ListMapping'
 const routing=(
   <div>
     <Provider store={store}>
-  <Router>
-    <div>
-      <App />
-      <Header />
-      <div className="p-5">
-      
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Mindmade' element={<Mindmade />} />
-        <Route path='/buttonClick' element={<ButtonClick />} />
-        <Route path='/ApiFetch' element={<ApiFetch />} />
-        <Route path='/Products' element={<Products />} />
-        <Route path='/ProductDetails' element={<ProductDetails />} />
-        <Route path='/List' element={<List />} />
-        <Route path='/ListMapping' element={<ListMapping />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      
-</div>
-    </div>
-  </Router>
-  </Provider>
+      <Router>
+        <div>
+          <App />
+          <Header />
+          <div className="p-5">
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/Mindmade' element={<Mindmade />} />
+              <Route path='/buttonClick' element={<ButtonClick />} />
+              <Route path='/ApiFetch' element={<ApiFetch />} />
+              <Route path='/Products' element={<Products />} />
+              <Route path='/ProductDetails' element={<ProductDetails />} />
+              <Route path='/List' element={<List />} />
+              <Route path='/ListMapping' element={<ListMapping />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </Provider>
   </div>
 )
 ReactDOM.render(routing,document.getElementById('root'));
