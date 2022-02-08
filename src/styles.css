@@ -1,14 +1,16 @@
 .product{
     padding-left:150px;
     display:grid;
-    grid-template-columns:330px 330px 330px ;
+    grid-template-columns:350px 350px 350px ;
     grid-template-rows: 500px;
     column-gap:20px ;
     row-gap: 10px;
+    
 }
 .pborder{
     border:1px solid black;
-    padding-left:20px
+    padding-left:20px;
+    border-radius: 20px;
     
 }
 .pborder img {

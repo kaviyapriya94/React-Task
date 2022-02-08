@@ -4,10 +4,17 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import Notification from './Notification';
+import { useNavigate } from 'react-router-dom';
+
 export default function Home(){
+    const navigate=useNavigate();
+
     useEffect(() => {
 		import("bootstrap/dist/js/bootstrap");
 	  }, []);
+      function handleCartPage(){
+        navigate('/cartPage');
+    }
     return(
         <div>
             <section className="pb-3">
@@ -40,7 +47,7 @@ export default function Home(){
                                     </li>
                                 </ul>
                             </li>
-                            <li className="nav-item"><Notification/></li>
+                            <li className="nav-item"><Notification handleCartPage={handleCartPage}/></li>
                         </ul>
 
                     </div>

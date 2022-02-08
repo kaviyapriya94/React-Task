@@ -5,16 +5,16 @@ import NotificationBadge from 'react-notification-badge';
 import { Effect } from "react-notification-badge";
 import { useSelector } from "react-redux";
 
-export default function Notifications(){
+export default function Notifications({handleCartPage}){
     const count = useSelector(
         (state) => state.countReducer
       );
     console.log(count);
     return(
-        <div className="notification">
+        <button className="notification btn bg-transparent border-transparent text-white" onClick={handleCartPage}>
             <NotificationBadge className="badge" count={count.count} effect={[Effect.SCALE]} />
             <FontAwesomeIcon icon={faShoppingCart} className="shoppingcart color-white" />
             
-        </div>
+        </button>
     )
 }

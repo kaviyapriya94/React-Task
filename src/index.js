@@ -16,6 +16,7 @@ import Products from './Components/Products.js';
 import ProductDetails from './Components/ProductDetails.js';
 import List from './Components/List'
 import ListMapping from './Components/ListMapping'
+import CartPage from './Components/cartpage';
 const routing=(
   <div>
     <Provider store={store}>
@@ -33,6 +34,7 @@ const routing=(
               <Route path='/ProductDetails' element={<ProductDetails />} />
               <Route path='/List' element={<List />} />
               <Route path='/ListMapping' element={<ListMapping />} />
+              <Route path='/cartPage' element={<CartPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
