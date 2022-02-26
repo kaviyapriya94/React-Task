@@ -9,6 +9,7 @@ import Pagination from './Pagination';
 import AddToCart from './AddToCart';
 import { useDispatch,useSelector } from "react-redux";
 import actions from "../redux/AddToCart/actions";
+import actions1 from "../redux/Cartpage/actions";
 import {Spinner} from "react-bootstrap";
 
 export default function Products(){
@@ -50,12 +51,19 @@ export default function Products(){
     var[endValue,setEndValue]=useState(1000);
     const[sortProduct2,setSortProduct2]=useState([]);
     const[ProductsList,setProductsList]=useState([]);
+
+    const cartid = JSON.parse(window.localStorage.getItem("cartId")) || [];
+    var[id,setId] = useState(cartid);
+    
+    const cart = useSelector(
+        (state) => state.CartReducer
+      );
+    
+
     useEffect(() =>{
-        
         Axios.get("https://fakestoreapi.com/products").then(res=>{
             setSortProduct2(res.data);
             setLoading(true);
-            
         });
     }, []); 
   
@@ -76,6 +84,7 @@ export default function Products(){
 
     function handleDetails(p){
         navigate('/productDetails',{state : {
+            productId:p.id,
             productTitle : p.title,
             productPrice : p.price,
             productDescription : p.description,
@@ -91,10 +100,29 @@ export default function Products(){
        setCurrentPage(pageNumber);
     }
     
-    const handleCount=(e)=>{
-        e.preventDefault();
-        const add=count.count+1;
-        dispatch({ type: actions.UPDATE_COUNT, payload: add});
+    const handleCount=(Id)=>{
+       if(id.length === 0){
+            setId(id = [Id])
+            window.localStorage.setItem("cartId",JSON.stringify(id))
+            dispatch({ type: actions1.UPDATE_CART,cart : id})
+            const add=count.count+1;
+            dispatch({ type: actions.UPDATE_COUNT, payload: add});
+        }
+        else {
+            if(!cart.id.includes(Id)){
+               var addId = JSON.parse(window.localStorage.getItem("cartId"))
+                var finalId = [...addId,Id];
+                window.localStorage.setItem("cartId",JSON.stringify(finalId));
+                dispatch({ type: actions1.UPDATE_CART,cart : finalId})
+                const add=count.count+1;
+                dispatch({ type: actions.UPDATE_COUNT, payload: add});
+               
+            }
+            else{
+                alert("This Item already exist in Cart");
+            }
+            
+        }
     }
 
     function handleChecked(e){
@@ -164,7 +192,8 @@ export default function Products(){
             setClicked(false)
             setSelectM(e.target.value);
         }else{
-            setSelectM("u")
+            setSelectM("u");
+            setIsselectM(false);
         }
     }
  
@@ -174,7 +203,8 @@ export default function Products(){
             setClicked(false)
             setSelectJ(e.target.value);
         }else{
-            setSelectJ("u")
+            setSelectJ("u");
+            setIsselectJ(false);
         }
     }
 
@@ -184,17 +214,19 @@ export default function Products(){
             setClicked(false)
             setSelectE(e.target.value);
         }else{
-            setSelectE("u")
+            setSelectE("u");
+            setIsselectE(false);
         }
     }
 
     function HandleSelectW(e){
         if(e.target.checked === true){
             setIsselectW(true) ;
-            setClicked(false)
+            setClicked(false);
             setSelectW(e.target.value);
         }else{
-            setSelectW("u")
+            setSelectW("u");
+            setIsselectW(false);
         }
     }
     
@@ -229,6 +261,10 @@ export default function Products(){
         setClicked(false);
         setBelow499(false);
         setBelow1000(true);
+        setSelectM("");
+        setSelectJ("");
+        setSelectE("");
+        setSelectW("");
         }
     function handleBelow499(){
     setStartValue(0);
@@ -236,10 +272,14 @@ export default function Products(){
     setClicked(false);
     setBelow1000(false);
     setBelow499(true);
+    
+    setSelectM("");
+        setSelectJ("");
+        setSelectE("");
+        setSelectW("");
  }
- function handleCartPage(){
-    navigate('/productDetails')
-}
+
+
   
     return(
         <>
@@ -272,7 +312,7 @@ export default function Products(){
                                         <button className="btn btn-primary" onClick={()=>handleDetails(p)}>View Details</button>
                                     </div>
                                     <div className='col-auto'>
-                                        <AddToCart handleCount={handleCount}/>
+                                        <AddToCart handleCount={()=>handleCount(p.id)}/>
                                     </div>
                                 </div>
                             </div>
@@ -309,7 +349,14 @@ export default function Products(){
                             isHalf={true}
                             edit={false}
                             />({p.rating.rate})</h5>
-                        <button className="btn btn-primary" onClick={()=>handleDetails(p)}>View Details</button>
+                         <div className='row'>
+                                    <div className='col-auto'>
+                                        <button className="btn btn-primary" onClick={()=>handleDetails(p)}>View Details</button>
+                                    </div>
+                                    <div className='col-auto'>
+                                        <AddToCart handleCount={()=>handleCount(p.id)}/>
+                                    </div>
+                                </div>
                     </div>
                 </div>
             )}

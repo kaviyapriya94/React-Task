@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import Notification from './Notification';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home(){
+export default function Header(){
     const navigate=useNavigate();
 
     useEffect(() => {
